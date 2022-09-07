@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"order/dotEnv"
 	"time"
 )
 
@@ -32,7 +33,7 @@ func GetProductsSellers(token string, productIDs []string) ([]ProductAndSelller,
 	body, _ := json.Marshal(cartReq)
 
 	bodyReader := bytes.NewReader(body)
-	requestUrl := "http://127.0.0.1:3002/getProductsSellers"
+	requestUrl := dotEnv.GoDotEnvVariable("GETPRODUCTSSELLERS")
 
 	req, err := http.NewRequest(http.MethodPost, requestUrl, bodyReader)
 	if err != nil {

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"order/dotEnv"
 	"order/routes"
 
 	"github.com/gin-contrib/cors"
@@ -11,7 +12,7 @@ func main() {
 	router := gin.Default()
 
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3001"}
+	config.AllowOrigins = []string{dotEnv.GoDotEnvVariable("BFFURL")}
 	router.Use(cors.New(config))
 
 	public := router.Group("/")

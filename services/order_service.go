@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"order/dotEnv"
 	"time"
 )
 
@@ -36,7 +37,7 @@ func InsertOrder(o Order) (string, error) {
 	body, _ := json.Marshal(o)
 
 	bodyReader := bytes.NewReader(body)
-	requestUrl := "http://127.0.0.1:3002/insertOrder"
+	requestUrl := dotEnv.GoDotEnvVariable("INSERTORDER")
 
 	req, err := http.NewRequest(http.MethodPost, requestUrl, bodyReader)
 	if err != nil {

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"order/dotEnv"
 	"time"
 )
 
@@ -30,6 +31,16 @@ type CartResp struct {
 	CartInfo CartInfo
 }
 
+type Product struct {
+	Id  string
+	Qty string
+}
+
+type CartProductsResp struct {
+	Message  string
+	Products []Product
+}
+
 func GetCartInfo(token string) (*CartInfo, error) {
 	cartReq := Token{
 		Token: token,
@@ -37,7 +48,7 @@ func GetCartInfo(token string) (*CartInfo, error) {
 	body, _ := json.Marshal(cartReq)
 
 	bodyReader := bytes.NewReader(body)
-	requestUrl := "http://127.0.0.1:3002/getCartInfo"
+	requestUrl := dotEnv.GoDotEnvVariable("GETCARTINFO")
 
 	req, err := http.NewRequest(http.MethodPost, requestUrl, bodyReader)
 	if err != nil {
@@ -73,16 +84,6 @@ func GetCartInfo(token string) (*CartInfo, error) {
 	return &resp.CartInfo, nil
 }
 
-type Product struct {
-	Id  string
-	Qty string
-}
-
-type CartProductsResp struct {
-	Message  string
-	Products []Product
-}
-
 func GetCartProducts(token string) ([]Product, error) {
 	cartReq := Token{
 		Token: token,
@@ -90,7 +91,7 @@ func GetCartProducts(token string) ([]Product, error) {
 	body, _ := json.Marshal(cartReq)
 
 	bodyReader := bytes.NewReader(body)
-	requestUrl := "http://127.0.0.1:3002/getCartProducts"
+	requestUrl := dotEnv.GoDotEnvVariable("GETCARTPRODUCTS")
 
 	req, err := http.NewRequest(http.MethodPost, requestUrl, bodyReader)
 	if err != nil {

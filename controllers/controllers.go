@@ -59,7 +59,6 @@ func CreateOrder() gin.HandlerFunc {
 			ctx.JSON(http.StatusInternalServerError, gin.H{})
 			return
 		}
-		fmt.Println(cart)
 
 		cartProducts, err := services.GetCartProducts(orderInfo.Token)
 		if err != nil {

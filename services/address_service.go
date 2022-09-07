@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"order/dotEnv"
 	"time"
 )
 
@@ -38,7 +39,7 @@ func GetDetailedAddressByID(token, addressID string) (*Address, error) {
 	body, _ := json.Marshal(addressReq)
 
 	bodyReader := bytes.NewReader(body)
-	requestUrl := "http://127.0.0.1:3002/getUserAddressById"
+	requestUrl := dotEnv.GoDotEnvVariable("GETUSERADDRESSBYID")
 
 	req, err := http.NewRequest(http.MethodPost, requestUrl, bodyReader)
 	if err != nil {
