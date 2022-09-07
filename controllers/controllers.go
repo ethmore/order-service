@@ -16,27 +16,6 @@ type OrderInfo struct {
 	CardLastFourDigits string
 }
 
-type GetUserAddressById struct {
-	Token     string
-	AddressId string
-}
-
-type AddressResp struct {
-	Message string
-	Address services.Address
-}
-
-// type Address struct {
-// 	Id              string `bson:"_id"`
-// 	Title           string
-// 	Name            string
-// 	Surname         string
-// 	PhoneNumber     string
-// 	Province        string
-// 	County          string
-// 	DetailedAddress string
-// }
-
 func CreateOrder() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var orderInfo OrderInfo
