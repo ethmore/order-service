@@ -16,6 +16,12 @@ type OrderInfo struct {
 	CardLastFourDigits string
 }
 
+func Test() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, gin.H{"message": "OK"})
+	}
+}
+
 func CreateOrder() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var orderInfo OrderInfo
