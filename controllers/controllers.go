@@ -3,7 +3,7 @@ package controllers
 import (
 	"fmt"
 	"net/http"
-	"order/services"
+	"order-service/services"
 	"time"
 
 	"github.com/gin-gonic/gin"

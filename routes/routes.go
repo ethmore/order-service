@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"order/controllers"
+	"order-service/controllers"
 
 	"github.com/gin-gonic/gin"
 )

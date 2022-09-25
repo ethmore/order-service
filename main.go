@@ -1,8 +1,8 @@
 package main
 
 import (
-	"order/dotEnv"
-	"order/routes"
+	"order-service/dotEnv"
+	"order-service/routes"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
